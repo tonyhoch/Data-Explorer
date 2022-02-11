@@ -5,6 +5,7 @@ import plotly.express as px
 from urllib.request import urlopen
 import json
 from datetime import datetime
+import io
 
 # set global variables
 KEYLIST = list(range(1, 30))
