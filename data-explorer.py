@@ -6,6 +6,7 @@ from urllib.request import urlopen
 import json
 from datetime import datetime
 import io
+import openpyxl
 
 # set global variables
 KEYLIST = list(range(1, 30))
@@ -271,6 +272,11 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
 # STREAMLIT
 # -----------------------------------------------------------------------------------------
 
+# get current date
+today = date.today()
+# dd/mm/YY
+today = today.strftime("%Y_%m_%d")
+
 # Setup sidebar
 st.sidebar.title('Load in your data!')
 
@@ -356,6 +362,8 @@ for i in range(int(chart_num)):
         if fig is not None:
             st.plotly_chart(fig)
             
+            
+            
             # create HTML file for download
             buffer = io.StringIO()
             fig.write_html(buffer, include_plotlyjs='cdn')
@@ -364,6 +372,6 @@ for i in range(int(chart_num)):
             st.download_button(
                 label=f'Download {chart_title}',
                 data=html_bytes,
-                file_name=f'{chart_title}.html',
+                file_name=f'{chart_title}_{today}.html',
                 mime='text/html'
         )
