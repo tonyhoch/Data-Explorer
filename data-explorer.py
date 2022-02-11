@@ -350,9 +350,9 @@ chart_num = st.sidebar.number_input('How many charts would you like?', min_value
 
 # Create charts for user
 for i in range(int(chart_num)):
-    with st.sidebar.expander(f'Chart {i+1}'):
+    with st.sidebar.expander(f'Chart {i+1}', expanded=True):
         fig, chart_title = create_user_defined_chart(i, def_x_idx, def_y_idx, def_color_idx)
-    with st.expander(f'Chart {i+1}'):
+    with st.expander(f'Chart {i+1}', expanded=True):
         if fig is not None:
             st.plotly_chart(fig)
             
