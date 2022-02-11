@@ -178,7 +178,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title)
             else:
                 fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -188,7 +188,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title)
             else:
                 fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -198,7 +198,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title)
             else:
                 fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -208,7 +208,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title)
             else:
                 fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -218,7 +218,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title)
             else:
                 fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -228,7 +228,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                 fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, trendline='ols')
             else:
                 fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, trendline='ols')
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
@@ -260,11 +260,12 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx):
                         scope='usa',
                         title=chart_title
                         )                
-            return fig
+            return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
 
+        
 # -----------------------------------------------------------------------------------------
 # STREAMLIT
 # -----------------------------------------------------------------------------------------
@@ -293,7 +294,7 @@ if uploaded_file is not None:
     1. Check the data types and change any that should be a different type.
     2. Choose your default variables (all created charts will default to these).
     3. Choose how many charts you want.
-    4. Open each chart's expander and select your options.
+    4. Open each chart's expander in the sidebr and select your options.
     5. View your charts in the section below!
     ''')
 else:
@@ -353,3 +354,15 @@ for i in range(int(chart_num)):
     with st.expander(f'Chart {i+1}'):
         if fig is not None:
             st.plotly_chart(fig)
+            
+            # create HTML file for download
+            buffer = io.StringIO()
+            fig.write_html(buffer, include_plotlyjs='cdn')
+            html_bytes = buffer.getvalue().encode()
+
+            st.download_button(
+                label=f'Download {chart_title}',
+                data=html_bytes,
+                file_name=f'{chart_title}.html',
+                mime='text/html'
+        )
