@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from urllib.request import urlopen
 import json
-from datetime import datetime
+from datetime import date
 import io
 import openpyxl
 
