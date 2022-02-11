@@ -276,7 +276,7 @@ st.sidebar.title('Load in your data!')
 
 
 # Get file from uer
-uploaded_file = st.sidebar.file_uploader('Upload data:', type=['csv', 'xslx'])
+uploaded_file = st.sidebar.file_uploader('Upload data:', type=['csv', 'xlsx'])
 if uploaded_file is not None:
     if uploaded_file.name.endswith('.csv'):
         df = pd.read_csv(uploaded_file)
