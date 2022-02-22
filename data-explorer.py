@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.io as pio
 from urllib.request import urlopen
 import json
 from datetime import date
@@ -341,6 +342,7 @@ with st.sidebar.expander('Default Visual Settings'):
     chosen_template = st.selectbox('Plot Style:', PLOT_STYLES)
     
     # set default style
+    pio.templates.default = chosen_template
     px.defaults.template = chosen_template
     
     # color scale setting
