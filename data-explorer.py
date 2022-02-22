@@ -21,10 +21,18 @@ CHART_TYPES = ['Bar', 'Box', 'Histogram', 'Line', 'Linear Regression', 'Map', 'S
 MAP_TYPES = ['USA-states', 'USA-Counties']
 CHART_ERR_MESS = '### Unable to create chart. Edit input data'
 CHARTS_WITHOUT_COLOR = ['Map']
-COLOR_SCALE_OPTIONS = ['agsunset', 'bluered', 'blues', 'cividis', 'darkmint', 'emrld', 'earth', 'greens', 'ice', 'inferno', 'jet', 'magma', 'magenta', 'tropic', 'viridis']
+COLOR_SCALE_OPTIONS = ['agsunset', 'bluered', 'blues', 'cividis', 'darkmint', 'emrld', 'earth', 
+                       'greens', 'ice', 'inferno', 'jet', 'magma', 'magenta', 'tropic', 'viridis']
 PLOT_STYLES = ['ggplot2', 'seaborn', 'simple_white', 'plotly',
-         'plotly_white', 'plotly_dark', 'presentation', 'none']
+               'plotly_white', 'plotly_dark', 'presentation', 'none']
 GRID_OPTIONS = ['xgridoff', 'ygridoff']
+
+
+# -----------------------------------------------------------------------------------------
+# CONFIG
+# -----------------------------------------------------------------------------------------
+
+st.set_option('wideMode' , True)
 
 # -----------------------------------------------------------------------------------------
 # FUNCTIONS
