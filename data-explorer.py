@@ -32,7 +32,11 @@ GRID_OPTIONS = ['xgridoff', 'ygridoff']
 # CONFIG
 # -----------------------------------------------------------------------------------------
 
-st.set_option('wideMode' , True)
+st.set_page_config(
+     page_icon=✅",
+     layout="wide",
+     initial_sidebar_state="expanded",
+ )
 
 # -----------------------------------------------------------------------------------------
 # FUNCTIONS
