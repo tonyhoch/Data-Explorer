@@ -343,7 +343,7 @@ with st.sidebar.expander('Default Visual Settings'):
     
     # set default style
     pio.templates.default = chosen_template
-    px.defaults.template = chosen_template
+    'px.defaults.template = chosen_template
     
     # color scale setting
     def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
