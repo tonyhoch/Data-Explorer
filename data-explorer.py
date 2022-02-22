@@ -349,7 +349,7 @@ with st.sidebar.expander('Default Visual Settings'):
     px.defaults.template = chosen_plot_style
     
     # color scale setting
-    def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis)
+    def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
     default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
     
                                                                                                     
