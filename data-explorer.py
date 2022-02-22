@@ -166,7 +166,6 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if final_filterd is None:
         st.write('Error filtering data')
 
-
     # Set chart title
     if chosen_color is None:
         chart_title = f'{title}: {chosen_Y.title()} vs. {chosen_X.title()}'
@@ -242,12 +241,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
         st.write('''- for states, use 'USA-states' [must have state code in dataframe. Ex) Arizona = AZ]''')
         st.write('''- for counties, choose 'USA-counties' [must have FIPS County Code mapped to each location:''')
         st.write('''- https://en.wikipedia.org/wiki/FIPS_county_code]''')
-
-
+         
         chosen_map_type = st.selectbox('Map Type', MAP_TYPES)
         try:
-
-
             final_filterd[chosen_X] = final_filterd[chosen_X].astype(str)
             if chosen_map_type == 'USA-states':
                 fig = px.choropleth(final_filterd, locations=chosen_X, color=chosen_Y,
@@ -321,7 +317,6 @@ with st.sidebar.expander('Data Types'):
     columns = columns.tolist()
 
     for col in columns:
-
         # read in data types and set default radio button value
         if df[col].dtypes == 'object':
             change_col_types.append(st.radio(f'{col}', DATA_TYPES, index=0))
@@ -346,13 +341,12 @@ with st.sidebar.expander('Default Visual Settings'):
     chosen_template = st.selectbox('Plot Style:', PLOT_STYLES)
     
     # set default style
-    px.defaults.template = chosen_plot_style
+    px.defaults.template = chosen_template
     
     # color scale setting
     def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
     default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
-    
-                                                                                                    
+                                                                                                
 # Get default variables for charts
 with st.sidebar.expander('Default variables for charts'): 
     default_X = st.selectbox('Default X variable:', df.columns)
