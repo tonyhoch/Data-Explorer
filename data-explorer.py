@@ -345,10 +345,9 @@ with st.sidebar.expander('Default Visual Settings'):
          
     # set grid options
     chosen_grid = st.multiselect('Grid Options:', GRID_OPTIONS)
-    str_chosen_grid = ','.join(chosen_grid)
 
     # set final template value
-    chosen_template = chosen_template + str_chosen_grid
+    chosen_template = chosen_template  + '+' + '+'.join(chosen_grid)
     
     # color scale setting
     def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
