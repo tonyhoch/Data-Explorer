@@ -21,6 +21,9 @@ MAP_TYPES = ['USA-states', 'USA-Counties']
 CHART_ERR_MESS = '### Unable to create chart. Edit input data'
 CHARTS_WITHOUT_COLOR = ['Map']
 COLOR_SCALE_OPTIONS = ['agsunset', 'bluered', 'blues', 'cividis', 'darkmint', 'emrld', 'earth', 'greens', 'ice', 'inferno', 'jet', 'magma', 'magenta', 'tropic', 'viridis']
+PLOT_STYLES = ['ggplot2', 'seaborn', 'simple_white', 'plotly',
+         'plotly_white', 'plotly_dark', 'presentation', 'xgridoff',
+         'ygridoff', 'gridon', 'none']
 
 # -----------------------------------------------------------------------------------------
 # FUNCTIONS
@@ -337,6 +340,19 @@ change_columns(df, col_types)
 with st.expander('DataFrame'):
     st.write(df)
 
+# default visual settings
+with st.sidebar.expander('Default Visual Settings'):
+    # overall template setting
+    chosen_template = st.selectbox('Plot Style:', PLOT_STYLES)
+    
+    # set default style
+    px.defaults.template = chosen_plot_style
+    
+    # color scale setting
+    def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis)
+    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
+    
+                                                                                                    
 # Get default variables for charts
 with st.sidebar.expander('Default variables for charts'): 
     default_X = st.selectbox('Default X variable:', df.columns)
@@ -344,15 +360,13 @@ with st.sidebar.expander('Default variables for charts'):
     color_options = ['None']
     color_options.extend(df.columns.tolist())
     default_color = st.selectbox('Default Color variable:', color_options)
-    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS)
+    
+    
 
     # get default indexes
     def_x_idx = df.columns.tolist().index(default_X)
     def_y_idx = df.columns.tolist().index(default_Y)
     def_color_idx = color_options.index(default_color)
-    def_color_scale_idx = COLOR_SCALE_OPTIONS.index(default_color_scale)
-    
-
 
 # Ask user how many charts they want
 chart_num = st.sidebar.number_input('How many charts would you like?', min_value=1, max_value=10, step=1, value=1)
