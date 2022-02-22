@@ -344,7 +344,7 @@ with st.sidebar.expander('Default variables for charts'):
     color_options = ['None']
     color_options.extend(df.columns.tolist())
     default_color = st.selectbox('Default Color variable:', color_options)
-    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=COLOR_SCALE_OPTIONS[-1])
+    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=-1)
 
     # get default indexes
     def_x_idx = df.columns.tolist().index(default_X)
