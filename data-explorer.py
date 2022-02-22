@@ -133,7 +133,7 @@ def apply_stat_df(stat_type, df, X, color):
 
 
 # function to create user defined chart
-def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, color_scale):
+def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, color_scale, chosen_template):
     chosen_chart = st.selectbox('Chart Type:', options=CHART_TYPES, key=KEYLIST[n_index])
     chosen_X = st.selectbox('Set your X variables:', df.columns, key=KEYLIST[n_index], index=def_x_idx)
     chosen_Y = st.selectbox('Set your Y/Target variable:', df.columns, key=KEYLIST[n_index], index=def_y_idx)
@@ -180,9 +180,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Bar':
         try:
             if chosen_color is not None and chosen_color != 'None':           
-                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale)
+                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
+                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -190,9 +190,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Histogram':
         try:
             if chosen_color is not None and chosen_color != 'None':           
-                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale)
+                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
+                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -200,9 +200,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Scatter':
         try:
             if chosen_color is not None and chosen_color != 'None':   
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale)
+                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
+                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -210,9 +210,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Line':
         try:
             if chosen_color is not None and chosen_color != 'None':
-                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale)
+                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
+                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -220,9 +220,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Box':
         try:
             if chosen_color is not None and chosen_color != 'None':
-                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale)
+                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title)
+                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -230,9 +230,9 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     if chosen_chart == 'Linear Regression':
         try:
             if chosen_color is not None and chosen_color != 'None':
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, trendline='ols', color_continuous_scale=color_scale)
+                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, trendline='ols', color_continuous_scale=color_scale, template=chosen_template)
             else:
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, trendline='ols')
+                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, trendline='ols', template=chosen_template)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
@@ -251,7 +251,8 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
                         color_continuous_scale='Viridis',
                         scope='usa',
                         locationmode = chosen_map_type,
-                        title=chart_title
+                        title=chart_title,
+                        template=chosen_template
                         )    
 
             elif chosen_map_type == 'USA-Counties':
@@ -260,7 +261,8 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
                 fig = px.choropleth(final_filterd, geojson=counties, locations=chosen_X, color=chosen_Y,
                         color_continuous_scale='Viridis',
                         scope='usa',
-                        title=chart_title
+                        title=chart_title,
+                        template=chosen_template
                         )                
             return fig, chart_title
         except:
@@ -341,10 +343,6 @@ with st.sidebar.expander('Default Visual Settings'):
     # overall template setting
     chosen_template = st.selectbox('Plot Style:', PLOT_STYLES)
     
-    # set default style
-    pio.templates.default = chosen_template
-    #px.defaults.template = chosen_template
-    
     # color scale setting
     def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
     default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
@@ -370,7 +368,7 @@ chart_num = st.sidebar.number_input('How many charts would you like?', min_value
 # Create charts for user
 for i in range(int(chart_num)):
     with st.sidebar.expander(f'Chart {i+1}', expanded=True):
-        fig, chart_title = create_user_defined_chart(i, def_x_idx, def_y_idx, def_color_idx, default_color_scale)
+        fig, chart_title = create_user_defined_chart(i, def_x_idx, def_y_idx, def_color_idx, default_color_scale, chosen_template)
     with st.expander(f'Chart {i+1}', expanded=True):
         if fig is not None:
             st.plotly_chart(fig)
