@@ -315,10 +315,10 @@ if uploaded_file is not None:
         st.markdown('''### Follow these steps to graph your data:
     1. Check the data types and change any that should be a different type.
     2. Alter the defualt visual settings if desired.
-    2. Choose your default variables (all created charts will default to these).
-    3. Choose how many charts you want.
-    4. Open each chart's expander in the sidebr and select your options.
-    5. View and download your charts in the section below!
+    3. Choose your default variables (all created charts will default to these).
+    4. Choose how many charts you want.
+    5. Open each chart's expander in the sidebr and select your options.
+    6. View and download your charts in the section below!
     ''')
 else:
     # break out of script if user has not uploaded file
