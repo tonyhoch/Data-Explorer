@@ -354,7 +354,8 @@ with st.expander('DataFrame'):
 # default visual settings
 with st.sidebar.expander('Default Visual Settings'):
     # overall template setting
-    chosen_template = st.selectbox('Plot Style:', PLOT_STYLES)
+    def_template_idx = PLOT_STYLES.index('plotly_white')
+    chosen_template = st.selectbox('Plot Style:', PLOT_STYLES, index=def_template_idx)
          
     # set grid options
     chosen_grid = st.multiselect('Grid Options:', GRID_OPTIONS)
