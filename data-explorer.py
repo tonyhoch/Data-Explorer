@@ -319,7 +319,7 @@ st.sidebar.title('Load in your data!')
 uploaded_file = st.sidebar.file_uploader('Upload data. Note: the first sheet (hidden included) will be uploaded for excel files.', type=['csv', 'xlsx'])
 if uploaded_file is not None:
 
-    df, title = creatse_df(uploaded_file)
+    df, title = create_df(uploaded_file)
 
     # write file name and dataframe to app
     if 'data' in title:
