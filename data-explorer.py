@@ -44,7 +44,7 @@ st.set_page_config(
 # -----------------------------------------------------------------------------------------
 
 # create pandas dataframe
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def create_df(file):
   
   if file.name.endswith('.csv'):
@@ -59,7 +59,7 @@ def create_df(file):
 
 
 # Change datatypes of dataframe
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def change_columns(df, dict):
     try:
         for key in dict:
@@ -77,7 +77,7 @@ def change_columns(df, dict):
 
 
 # fuction to filter data
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def filter_df(df, item, key):
     if df[item].dtypes in FLOAT_NUMERICS:
         # working with numbers
@@ -145,7 +145,7 @@ def filter_df(df, item, key):
 
 
 # function to apply chosen grouping method to the dataframe
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def apply_stat_df(stat_type, df, X, color):
     # Apply Stat method to dataframe
     if stat_type == 'None':
@@ -164,7 +164,7 @@ def apply_stat_df(stat_type, df, X, color):
 
 
 # function to create user defined chart
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, color_scale, chosen_template):
     chosen_chart = st.selectbox('Chart Type:', options=CHART_TYPES, key=KEYLIST[n_index])
     chosen_X = st.selectbox('Set your X variables:', df.columns, key=KEYLIST[n_index], index=def_x_idx)
