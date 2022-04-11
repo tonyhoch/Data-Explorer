@@ -358,9 +358,6 @@ with st.sidebar.expander('Default Visual Settings'):
     default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
 
     
-with st.sidebar:
-  st.write("")
-    
 # change column types
 change_col_types = []
 with st.sidebar.expander('Data Types'):
@@ -386,9 +383,6 @@ change_columns(df, col_types)
 with st.expander('DataFrame'):
     st.write(df)
 
-
-with st.sidebar:
-  st.write("")
                                                                                                 
 # Get default variables for charts
 with st.sidebar.expander('Default variables for charts'): 
