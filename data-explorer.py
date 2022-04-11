@@ -340,7 +340,27 @@ else:
     st.write('Upload an excel file and use the app to explore the data!')
     st.stop()
 
+# default visual settings
+with st.sidebar.expander('Default Visual Settings'):
+    # overall template setting
+    def_template_idx = PLOT_STYLES.index('plotly_white')
+    chosen_template = st.selectbox('Plot Style:', PLOT_STYLES, index=def_template_idx)
+         
+    # set grid options
+    chosen_grid = st.multiselect('Grid Options:', GRID_OPTIONS)
 
+    # set final template value - if user wants grids off
+    if chosen_grid:
+         chosen_template = chosen_template  + '+' + '+'.join(chosen_grid)
+    
+    # color scale setting
+    def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
+    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
+
+    
+with st.sidebar:
+  st.write("")
+    
 # change column types
 change_col_types = []
 with st.sidebar.expander('Data Types'):
@@ -366,22 +386,9 @@ change_columns(df, col_types)
 with st.expander('DataFrame'):
     st.write(df)
 
-# default visual settings
-with st.sidebar.expander('Default Visual Settings'):
-    # overall template setting
-    def_template_idx = PLOT_STYLES.index('plotly_white')
-    chosen_template = st.selectbox('Plot Style:', PLOT_STYLES, index=def_template_idx)
-         
-    # set grid options
-    chosen_grid = st.multiselect('Grid Options:', GRID_OPTIONS)
 
-    # set final template value - if user wants grids off
-    if chosen_grid:
-         chosen_template = chosen_template  + '+' + '+'.join(chosen_grid)
-    
-    # color scale setting
-    def_color_scale_idx = COLOR_SCALE_OPTIONS.index('viridis')
-    default_color_scale = st.selectbox('Default Scale Color:', COLOR_SCALE_OPTIONS, index=def_color_scale_idx)
+with st.sidebar:
+  st.write("")
                                                                                                 
 # Get default variables for charts
 with st.sidebar.expander('Default variables for charts'): 
