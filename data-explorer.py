@@ -184,7 +184,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     chosen_stat = st.selectbox('Stat Type:', STAT_TYPES, key=KEYLIST[n_index])
     
     # animated chart
-    animated = st.checkbox("Animated Chart")
+    animated = st.checkbox("Animated Chart", key=KEYLIST[n_index])
     
     if animated:
       animated_x = st.selectbox('Animation X Variable:', df.columns, key=KEYLIST[n_index], index=def_x_idx)
