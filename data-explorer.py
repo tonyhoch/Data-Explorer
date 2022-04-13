@@ -185,7 +185,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     
     if animated:
       animated_x = st.selectbox('Animation X Variable:', df.columns, key=KEYLIST[n_index], index=def_x_idx)
-      animated_y = st.selectbox('Set your Y/Target variable:', df.columns, key=KEYLIST[n_index], index=def_y_idx)
+      animated_y = st.selectbox('Animation Y Variable', df.columns, key=KEYLIST[n_index], index=def_y_idx)
     else:
       animated_x = None
       animated_y = None
