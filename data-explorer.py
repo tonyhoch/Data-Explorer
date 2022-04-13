@@ -175,7 +175,7 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
         
         # ask user for color choice 
         chosen_color = st.selectbox('Color variable:', color_options, key=KEYLIST[n_index], index=def_color_idx)
-        if chosen_color = 'None':
+        if chosen_color == 'None':
             # set the color and color scale to None
             chosen_color = None
             color_scale = None
