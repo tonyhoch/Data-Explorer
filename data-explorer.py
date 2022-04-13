@@ -77,7 +77,6 @@ def change_columns(df, dict):
 
 
 # fuction to filter data
-@st.experimental_memo(suppress_st_warning=True)
 def filter_df(df, item, key):
     if df[item].dtypes in FLOAT_NUMERICS:
         # working with numbers
@@ -145,7 +144,6 @@ def filter_df(df, item, key):
 
 
 # function to apply chosen grouping method to the dataframe
-@st.experimental_memo(suppress_st_warning=True)
 def apply_stat_df(stat_type, df, X, color):
     # Apply Stat method to dataframe
     if stat_type == 'None':
