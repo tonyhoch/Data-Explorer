@@ -230,51 +230,36 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
             st.write(CHART_ERR_MESS)
             return None
     if chosen_chart == 'Histogram':
-        try:
-            if chosen_color is not None and chosen_color != 'None':           
-                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+        try: 
+            fig = px.histogram(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
     if chosen_chart == 'Scatter':
         try:
-            if chosen_color is not None and chosen_color != 'None':   
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+            fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
     if chosen_chart == 'Line':
         try:
-            if chosen_color is not None and chosen_color != 'None':
-                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+            fig = px.line(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
     if chosen_chart == 'Box':
         try:
-            if chosen_color is not None and chosen_color != 'None':
-                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+            fig = px.box(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
             return None
     if chosen_chart == 'Linear Regression':
         try:
-            if chosen_color is not None and chosen_color != 'None':
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, trendline='ols', color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, trendline='ols', template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+            fig = px.scatter(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, trendline='ols', color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
