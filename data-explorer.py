@@ -381,7 +381,7 @@ with st.expander('DataFrame'):
 
                                                                                                 
 # Get default variables for charts
-with st.sidebar.expander('Default variables for charts'): 
+with st.sidebar.expander('Default variables for charts', expanded=True): 
     default_X = st.selectbox('Default X variable:', df.columns, index=0)
     default_Y = st.selectbox('Default Y/Target variable:', df.columns, index=1)
     color_options = ['None']
