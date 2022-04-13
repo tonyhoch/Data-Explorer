@@ -175,6 +175,11 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
         
         # ask user for color choice 
         chosen_color = st.selectbox('Color variable:', color_options, key=KEYLIST[n_index], index=def_color_idx)
+        if chosen_color = 'None':
+            # set the color and color scale to None
+            chosen_color = None
+            color_scale = None
+          
     else:
         chosen_color = None
     
@@ -218,12 +223,10 @@ def create_user_defined_chart(n_index, def_x_idx, def_y_idx, def_color_idx, colo
     else:
         chart_title = f'{title}: {chosen_Y.title()} vs. {chosen_X.title()} w/ {chosen_color.title()}'
 
+    # create charts based on chosen chart type
     if chosen_chart == 'Bar':
         try:
-            if chosen_color is not None and chosen_color != 'None':           
-                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
-            else:
-                fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, title=chart_title, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
+            fig = px.bar(final_filterd, x=chosen_X, y=chosen_Y, color=chosen_color, title=chart_title, color_continuous_scale=color_scale, template=chosen_template, animation_frame=animated_x, animation_group=animated_y)
             return fig, chart_title
         except:
             st.write(CHART_ERR_MESS)
